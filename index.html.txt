@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harihriday Financial Services - Your Financial Partner</title>
+    <!-- Use Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Using a more attractive and modern font pair: Poppins for headings, Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1d4ed8;
+            --secondary-blue: #2563eb;
+            --dark-bg: #0f172a;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: #333;
+        }
+        .font-heading {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero-bg {
+            background-color: var(--dark-bg);
+            background-image: radial-gradient(at 0% 0%, rgba(29, 78, 216, 0.3) 0, transparent 50%),
+                              radial-gradient(at 100% 100%, rgba(37, 99, 235, 0.3) 0, transparent 50%);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #60a5fa, #3b82f6);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-8px);
+        }
+        .modal {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal.active {
+            display: flex;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            transform: scale(0.95);
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+        }
+        .modal.active .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-slate-100">
+
+    <!-- Header and Navigation Bar -->
+    <header class="bg-white sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-3">
+                <!-- A more professional logo icon with a gradient fill -->
+                <svg class="w-10 h-10 text-blue-700 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#3b82f6; stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#60a5fa; stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#logo-gradient)" d="M12 2L2 21h20L12 2zm0 4.19L17.75 18H6.25L12 4.19zM12 11a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/>
+                </svg>
+                <span class="text-3xl font-extrabold text-gray-800 tracking-tight font-heading">Harihriday Financial Services</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#services" class="text-gray-600 font-medium hover:text-blue-600 transition-colors duration-300">Services</a>
+                <a href="#about" class="text-gray-600 font-medium hover:text-blue-600 transition-colors duration-300">About Us</a>
+                <a href="#contact" class="text-gray-600 font-medium hover:text-blue-600 transition-colors duration-300">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2">
+            <a href="#services" class="block px-6 py-3 text-gray-700 hover:bg-blue-50 font-medium">Services</a>
+            <a href="#about" class="block px-6 py-3 text-gray-700 hover:bg-blue-50 font-medium">About Us</a>
+            <a href="#contact" class="block px-6 py-3 text-gray-700 hover:bg-blue-50 font-medium">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-24 md:py-40 text-center rounded-b-[6rem] shadow-xl">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight drop-shadow-lg font-heading">
+                Your Trusted Partner for Financial Excellence
+            </h1>
+            <p class="mt-6 md:mt-8 text-lg md:text-xl max-w-3xl mx-auto opacity-90">
+                Secure your future with our expert guidance on health, life, and investment strategies.
+            </p>
+            <a href="#services" class="mt-10 inline-block bg-white text-blue-700 font-extrabold py-4 px-12 rounded-full shadow-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+                Explore Our Solutions
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 md:py-32 bg-slate-100">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 font-heading">
+                <span class="text-gradient">Our Services</span>
+            </h2>
+            <p class="mt-4 text-gray-600 text-lg max-w-3xl mx-auto">
+                Tailored solutions to protect what matters and grow your wealth for the long term.
+            </p>
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Service 1: Health Insurance -->
+                <button data-modal-target="health-modal" class="text-left bg-white p-10 rounded-3xl shadow-lg card-hover cursor-pointer border-t-4 border-blue-500">
+                    <div class="flex justify-center mb-8">
+                        <!-- Health Insurance Icon: Heart with medical cross -->
+                        <svg class="w-20 h-20 text-blue-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5A3.5 3.5 0 015.5 5c1.47 0 2.76.85 3.48 2.1a4.34 4.34 0 013.02-2.1c1.23 0 2.37.5 3.19 1.34a3.5 3.5 0 013.81 1.66c.35.5.5 1.05.5 1.6 0 1.25-.66 2.34-1.74 3.09l-7.25 6.64-1.45-1.32zm-.75-6.7c-.4-.4-1.04-.4-1.44 0l-3.35 3.05a.7.7 0 00-.09.91l.2.2a.7.7 0 00.91.09l3.3-3.04a1 1 0 011.41 0l3.3 3.05a.7.7 0 00.91-.09l.2-.2a.7.7 0 00-.09-.91l-3.35-3.05a1 1 0 01-1.44 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3 font-heading">Health Insurance</h3>
+                    <p class="text-gray-600">
+                        Protect yourself and your family from unforeseen medical expenses with comprehensive and reliable health coverage.
+                    </p>
+                </button>
+                <!-- Service 2: Life Insurance -->
+                <button data-modal-target="life-modal" class="text-left bg-white p-10 rounded-3xl shadow-lg card-hover cursor-pointer border-t-4 border-blue-500">
+                    <div class="flex justify-center mb-8">
+                        <!-- Life Insurance Icon: Shield with Heart inside -->
+                        <svg class="w-20 h-20 text-blue-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 5.5v6c0 6.5 10 9.5 10 9.5s10-3 10-9.5v-6L12 2zM12 18.2c-5.5-2.2-8-5.3-8-8.2v-5l8-2.5 8 2.5v5c0 2.9-2.5 6-8 8.2zm-1.45-10.7a1.5 1.5 0 112.9 0 1.5 1.5 0 01-2.9 0zM12 11c-2.5 0-4.5 2-4.5 4.5S9.5 20 12 20s4.5-2 4.5-4.5S14.5 11 12 11z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3 font-heading">Life Insurance</h3>
+                    <p class="text-gray-600">
+                        Ensure the financial well-being and security of your loved ones with tailored life insurance policies.
+                    </p>
+                </button>
+                <!-- Service 3: Mutual Funds -->
+                <button data-modal-target="mutual-inquiry-modal" class="text-left bg-white p-10 rounded-3xl shadow-lg card-hover cursor-pointer border-t-4 border-blue-500">
+                    <div class="flex justify-center mb-8">
+                        <!-- Mutual Funds Icon: Coin with upward arrow -->
+                        <svg class="w-20 h-20 text-blue-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H8v-2h3v2zm0-4H8v-2h3v2zm0-4H8V6h3v2zm4 8h-3v-2h3v2zm0-4h-3v-2h3v2zm0-4h-3V6h3v2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3 font-heading">Mutual Funds</h3>
+                    <p class="text-gray-600">
+                        Invest with confidence in a diversified portfolio to achieve your long-term financial goals.
+                    </p>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Differentiators Section - A more compact section -->
+    <section class="py-20 md:py-32 bg-slate-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center text-gray-800 mb-16 font-heading">Why Choose Harihriday Financial Services?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Card 1 -->
+                <div class="text-center p-8 bg-white rounded-2xl shadow-lg card-hover border-b-4 border-blue-500">
+                    <div class="flex justify-center mb-6">
+                        <svg class="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 font-heading">Personalized Guidance</h3>
+                    <p class="text-gray-600">We provide one-on-one consultations to understand your unique financial situation and goals.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="text-center p-8 bg-white rounded-2xl shadow-lg card-hover border-b-4 border-blue-500">
+                    <div class="flex justify-center mb-6">
+                        <svg class="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.162a2.256 2.256 0 00-3.182 0l-5.06 5.06a2.257 2.257 0 000 3.182l5.06 5.06a2.257 2.257 0 003.182 0l5.06-5.06a2.257 2.257 0 000-3.182l-5.06-5.06z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 font-heading">Transparent Process</h3>
+                    <p class="text-gray-600">Our commitment to transparency ensures you are always informed and in control of your investments.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="text-center p-8 bg-white rounded-2xl shadow-lg card-hover border-b-4 border-blue-500">
+                    <div class="flex justify-center mb-6">
+                        <svg class="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.484 9.25 5 7.5 5S4.168 5.484 3 6.253v13C4.168 18.484 5.75 18 7.5 18s3.332.484 4.5 1.253m0-13C13.168 5.484 14.75 5 16.5 5s3.332.484 4.5 1.253v13C19.832 18.484 18.25 18 16.5 18s-3.332.484-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 font-heading">Long-Term Partnership</h3>
+                    <p class="text-gray-600">We're here for the long run, offering continuous support and adapting strategies as your needs evolve.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Risks Section - A more compact section -->
+    <section class="bg-gray-800 text-white py-16 rounded-[4rem] mx-6 shadow-2xl">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-extrabold text-white mb-4 font-heading">A Note on Investment Risks</h2>
+            <p class="text-gray-300 text-lg max-w-4xl mx-auto opacity-90">
+                All investments carry risk. The value of your investments may fluctuate, and you may lose money. Past performance is not a guarantee of future results. Please carefully consider your personal financial situation and risk tolerance before making any investment decisions.
+            </p>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-32 bg-slate-100">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4 font-heading">
+                About <span class="text-gradient">Harihriday Financial Services</span>
+            </h2>
+            <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                Founded on the principles of integrity and trust, Harihriday Financial Services is dedicated to helping individuals and families build a secure financial future. We believe that everyone deserves clear, honest advice and access to the best financial products on the market. Our team of experts is committed to understanding your unique needs and providing personalized solutions that empower you to make informed decisions.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="bg-white p-10 md:p-16 rounded-3xl shadow-2xl max-w-2xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 text-center mb-4 font-heading">Get in Touch</h2>
+                <p class="text-center text-gray-600 mb-12 text-lg">
+                    We're here to answer your questions and help you get started.
+                </p>
+
+                <!-- NEW: Direct Email Button with pre-filled subject and body -->
+                <div class="flex justify-center mb-8">
+                    <a href="mailto:akshar.00369@gmail.com?subject=Financial%20Services%20Inquiry&body=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+                       class="inline-block bg-blue-600 text-white font-bold py-4 px-12 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105">
+                        Email Us Directly
+                    </a>
+                </div>
+                
+                <p class="text-center text-gray-600 mb-6 text-xl font-bold">Or fill out the form below.</p>
+
+                <!-- Form -->
+                <form action="mailto:akshar.00369@gmail.com" method="post" enctype="text/plain">
+                    <div class="space-y-8">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full p-4 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 transition-all duration-300 shadow-sm" placeholder="Your Full Name" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-semibold mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" class="w-full p-4 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 transition-all duration-300 shadow-sm" placeholder="your.email@example.com" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
+                            <textarea id="message" name="message" rows="6" class="w-full p-4 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 transition-all duration-300 shadow-sm" placeholder="Tell us about your financial goals..." required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-700 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-blue-800 transition-colors duration-300">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-16 text-center rounded-t-[6rem] shadow-inner">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="mb-4 md:mb-0">
+                    <a href="#" class="flex items-center justify-center md:justify-start space-x-2">
+                        <svg class="w-8 h-8 text-blue-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 21h20L12 2zm0 4.19L17.75 18H6.25L12 4.19z"/>
+                        </svg>
+                        <span class="text-xl font-bold text-white font-heading">Harihriday Financial Services</span>
+                    </a>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#services" class="hover:text-white transition-colors">Services</a>
+                    <a href="#about" class="hover:text-white transition-colors">About Us</a>
+                    <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+            <p class="text-sm">&copy; 2025 Harihriday Financial Services. All Rights Reserved.</p>
+            <p class="mt-2 text-xs">Harihriday Financial Services is a financial services consultancy. All investment decisions should be made with careful consideration of personal risk tolerance.</p>
+        </div>
+    </footer>
+
+    <!-- Service Modals -->
+    <!-- Health Insurance Modal -->
+    <div id="health-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black bg-opacity-70 transition-opacity duration-300">
+        <div class="modal-content bg-white rounded-2xl p-8 max-w-xl mx-auto shadow-2xl relative">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <h3 class="text-3xl font-bold text-gray-800 mb-4 font-heading">Comprehensive Health Insurance</h3>
+            <p class="text-gray-600 mb-6">
+                Our health insurance plans are designed to give you peace of mind. We offer a wide range of coverage options, including cashless hospitalization, maternity benefits, and critical illness coverage. Our expert advisors will help you find the perfect plan to protect your family's health and finances.
+            </p>
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <p class="text-center text-gray-600 mb-4">Interested in this service? Fill out the form below and we'll be in touch.</p>
+                <form action="mailto:health-inquiry@harihridayfs.com" method="post" enctype="text/plain">
+                    <div class="space-y-4">
+                        <input type="text" name="Name" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Your Name" required>
+                        <input type="email" name="Email" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Your Email" required>
+                        <input type="tel" name="Phone" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Your Phone Number" required>
+                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                            Submit Inquiry
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Life Insurance Modal -->
+    <div id="life-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black bg-opacity-70 transition-opacity duration-300">
+        <div class="modal-content bg-white rounded-2xl p-8 max-w-xl mx-auto shadow-2xl relative">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <h3 class="text-3xl font-bold text-gray-800 mb-4 font-heading">Secure Your Family's Future</h3>
+            <p class="text-gray-600 mb-6">
+                Life insurance is a cornerstone of a sound financial plan. Our policies ensure that your loved ones are financially protected in your absence. We offer flexible term and whole life plans tailored to your specific needs and long-term goals.
+            </p>
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <p class="text-center text-gray-600 mb-4">Interested in personalized guidance? Fill out the form below and we'll be in touch.</p>
+                <form action="mailto:life-inquiry@harihridayfs.com" method="post" enctype="text/plain">
+                    <div class="space-y-4">
+                        <input type="text" name="Name" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Your Name" required>
+                        <input type="email" name="Email" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Your Email" required>
+                        <input type="tel" name="Phone" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Your Phone Number" required>
+                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                            Submit Inquiry
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- General Purpose SIP Calculator Modal -->
+    <div id="sip-calculator-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black bg-opacity-70 transition-opacity duration-300">
+        <div class="modal-content bg-white rounded-2xl p-8 max-w-2xl mx-auto shadow-2xl relative w-11/12">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <h3 class="text-3xl font-bold text-gray-800 mb-4 text-center font-heading">SIP Calculator</h3>
+            <p class="text-gray-600 mb-6 text-center">
+                Calculate the future value of your monthly SIP investments.
+            </p>
+            <div class="space-y-6">
+                <div>
+                    <label for="sip-amount" class="block text-gray-700 font-medium mb-1">Monthly Investment (₹)</label>
+                    <input type="number" id="sip-amount" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="5000" min="100">
+                </div>
+                <div>
+                    <label for="sip-years" class="block text-gray-700 font-medium mb-1">Investment Duration (Years)</label>
+                    <input type="number" id="sip-years" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="10" min="1" max="100">
+                </div>
+                <div>
+                    <label for="sip-returns" class="block text-gray-700 font-medium mb-1">Expected Annual Returns (% Yearly)</label>
+                    <input type="number" id="sip-returns" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="12" min="1" max="50">
+                </div>
+                <button id="calculate-sip-value" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                    CALCULATE
+                </button>
+                <div id="sip-value-result" class="text-center p-4 bg-gray-100 rounded-lg hidden">
+                    <p class="text-lg font-semibold text-gray-800 mb-2">Total Amount Invested:</p>
+                    <p id="total-invested-sip" class="text-2xl font-bold text-blue-600"></p>
+                    <p class="text-lg font-semibold text-gray-800 mt-4">Est. Total Corpus:</p>
+                    <p id="total-corpus-sip" class="text-2xl font-bold text-blue-600 mt-2"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SWP Calculator Modal -->
+    <div id="swp-calculator-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black bg-opacity-70 transition-opacity duration-300">
+        <div class="modal-content bg-white rounded-2xl p-8 max-w-2xl mx-auto shadow-2xl relative w-11/12">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <h3 class="text-3xl font-bold text-gray-800 mb-4 text-center font-heading">SWP Calculator</h3>
+            <p class="text-gray-600 mb-6 text-center">
+                Calculate the returns and remaining corpus after regular withdrawals.
+            </p>
+            <div class="space-y-6">
+                <div>
+                    <label for="swp-initial-investment" class="block text-gray-700 font-medium mb-1">Total Initial Investment (₹)</label>
+                    <input type="number" id="swp-initial-investment" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="100000" min="100">
+                </div>
+                <div>
+                    <label for="swp-withdrawal-amount" class="block text-gray-700 font-medium mb-1">Monthly Withdrawal (₹)</label>
+                    <input type="number" id="swp-withdrawal-amount" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="1000" min="100">
+                </div>
+                <div>
+                    <label for="swp-years" class="block text-gray-700 font-medium mb-1">Duration (Years)</label>
+                    <input type="number" id="swp-years" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="5" min="1" max="100">
+                </div>
+                <div>
+                    <label for="swp-returns" class="block text-gray-700 font-medium mb-1">Expected Annual Returns (% Yearly)</label>
+                    <input type="number" id="swp-returns" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="10" min="1" max="50">
+                </div>
+                <button id="calculate-swp-value" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                    CALCULATE
+                </button>
+                <div id="swp-value-result" class="text-center p-4 bg-gray-100 rounded-lg hidden">
+                    <p class="text-lg font-semibold text-gray-800 mb-2">Total Amount Withdrawn:</p>
+                    <p id="total-withdrawn-swp" class="text-2xl font-bold text-blue-600"></p>
+                    <p class="text-lg font-semibold text-gray-800 mt-4">Remaining Corpus:</p>
+                    <p id="remaining-corpus-swp" class="text-2xl font-bold text-blue-600 mt-2"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EMI Calculator Modal -->
+    <div id="emi-calculator-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black bg-opacity-70 transition-opacity duration-300">
+        <div class="modal-content bg-white rounded-2xl p-8 max-w-2xl mx-auto shadow-2xl relative w-11/12">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <h3 class="text-3xl font-bold text-gray-800 mb-4 text-center font-heading">EMI Calculator</h3>
+            <p class="text-gray-600 mb-6 text-center">
+                Calculate your monthly loan payments.
+            </p>
+            <div class="space-y-6">
+                <div>
+                    <label for="loan-amount" class="block text-gray-700 font-medium mb-1">Loan Amount (₹)</label>
+                    <input type="number" id="loan-amount" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="500000" min="1000">
+                </div>
+                <div>
+                    <label for="loan-interest" class="block text-gray-700 font-medium mb-1">Interest Rate (% Yearly)</label>
+                    <input type="number" id="loan-interest" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="10" min="1" max="50">
+                </div>
+                <div>
+                    <label for="loan-duration" class="block text-gray-700 font-medium mb-1">Loan Duration (Years)</label>
+                    <input type="number" id="loan-duration" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="10" min="1" max="50">
+                </div>
+                <button id="calculate-emi-value" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                    CALCULATE
+                </button>
+                <div id="emi-value-result" class="text-center p-4 bg-gray-100 rounded-lg hidden">
+                    <p class="text-lg font-semibold text-gray-800 mb-2">Your Estimated EMI would be:</p>
+                    <p id="total-emi-value" class="text-2xl font-bold text-blue-600"></p>
+                    <p class="text-lg font-semibold text-gray-800 mt-4">Total Amount Payable:</p>
+                    <p id="total-payable-emi" class="text-2xl font-bold text-blue-600 mt-2"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Retirement Calculator Modal -->
+    <div id="retirement-calculator-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black bg-opacity-70 transition-opacity duration-300">
+        <div class="modal-content bg-white rounded-2xl p-8 max-w-2xl mx-auto shadow-2xl relative w-11/12">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <h3 class="text-3xl font-bold text-gray-800 mb-4 text-center font-heading">Retirement Planner</h3>
+            <p class="text-gray-600 mb-6 text-center">
+                Plan for your post-retirement needs with this simple tool.
+            </p>
+            <div class="space-y-6">
+                <div>
+                    <label for="present-age" class="block text-gray-700 font-medium mb-1">Present Age (Yrs)</label>
+                    <input type="number" id="present-age" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="30" min="1">
+                </div>
+                <div>
+                    <label for="retirement-age" class="block text-gray-700 font-medium mb-1">Retirement Age (Yrs)</label>
+                    <input type="number" id="retirement-age" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="60" min="1">
+                </div>
+                <div>
+                    <label for="monthly-expenses" class="block text-gray-700 font-medium mb-1">Current Monthly Expenses (₹)</label>
+                    <input type="number" id="monthly-expenses" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="50000" min="100">
+                </div>
+                <div>
+                    <label for="ret-expected-returns" class="block text-gray-700 font-medium mb-1">Expected Returns (% Yearly)</label>
+                    <input type="number" id="ret-expected-returns" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="12" min="1" max="50">
+                </div>
+                <div>
+                    <label for="ret-inflation" class="block text-gray-700 font-medium mb-1">Expected Inflation (%)</label>
+                    <input type="number" id="ret-inflation" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="7" min="1" max="50">
+                </div>
+                <button id="calculate-retirement-value" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                    CALCULATE
+                </button>
+                <div id="retirement-value-result" class="text-center p-4 bg-gray-100 rounded-lg hidden">
+                    <p class="text-lg font-semibold text-gray-800 mb-2">Required Corpus at Retirement:</p>
+                    <p id="required-corpus-ret" class="text-2xl font-bold text-blue-600"></p>
+                    <p class="text-lg font-semibold text-gray-800 mt-4">Required Monthly SIP to achieve goal:</p>
+                    <p id="required-sip-ret" class="text-2xl font-bold text-blue-600 mt-2"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Goal Planning Calculator Modal -->
+    <div id="goal-planning-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black bg-opacity-70 transition-opacity duration-300">
+        <div class="modal-content bg-white rounded-2xl p-8 max-w-2xl mx-auto shadow-2xl relative w-11/12">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <h3 class="text-3xl font-bold text-gray-800 mb-4 text-center font-heading">Goal Planning</h3>
+            <p class="text-gray-600 mb-6 text-center">
+                Calculate the required investment to achieve your future financial goals.
+            </p>
+            <div class="space-y-6">
+                <div>
+                    <label for="goal-name" class="block text-gray-700 font-medium mb-1">Goal Name</label>
+                    <input type="text" id="goal-name" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Car, House, Vacation">
+                </div>
+                <div>
+                    <label for="present-cost" class="block text-gray-700 font-medium mb-1">Present Cost (₹)</label>
+                    <input type="number" id="present-cost" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="1000000" min="100">
+                </div>
+                <div>
+                    <label for="goal-years" class="block text-gray-700 font-medium mb-1">Years to Maturity</label>
+                    <input type="number" id="goal-years" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="5" min="1" max="100">
+                </div>
+                <div>
+                    <label for="goal-expected-returns" class="block text-gray-700 font-medium mb-1">Expected Returns (% Yearly)</label>
+                    <input type="number" id="goal-expected-returns" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="12" min="1" max="50">
+                </div>
+                <div>
+                    <label for="goal-inflation" class="block text-gray-700 font-medium mb-1">Expected Inflation (%)</label>
+                    <input type="number" id="goal-inflation" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="7" min="1" max="50">
+                </div>
+                <button id="calculate-goal-value" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                    CHECK
+                </button>
+                <div id="goal-value-result" class="text-center p-4 bg-gray-100 rounded-lg hidden">
+                    <p class="text-lg font-semibold text-gray-800 mb-2">Required Target Amount for <span id="target-goal-name">the goal</span> would be:</p>
+                    <p id="target-amount-goal" class="text-2xl font-bold text-blue-600"></p>
+                    <p class="text-lg font-semibold text-gray-800 mt-4">Required Monthly SIP to achieve the goal:</p>
+                    <p id="required-sip-goal" class="text-2xl font-bold text-blue-600 mt-2"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Child's Education Modal -->
+    <div id="child-education-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black bg-opacity-70 transition-opacity duration-300">
+        <div class="modal-content bg-white rounded-2xl p-8 max-w-2xl mx-auto shadow-2xl relative w-11/12">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <h3 class="text-3xl font-bold text-gray-800 mb-4 text-center font-heading">Plan for Your Child's Education</h3>
+            <p class="text-gray-600 mb-6 text-center">
+                Use this simple tool to determine the investment requirements to meet this goal.
+            </p>
+            <div class="space-y-6">
+                <div>
+                    <label for="child-name" class="block text-gray-700 font-medium mb-1">Child Name</label>
+                    <input type="text" id="child-name" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Jane Doe">
+                </div>
+                <div>
+                    <label for="edu-years-to-maturity" class="block text-gray-700 font-medium mb-1">Years to Maturity</label>
+                    <input type="number" id="edu-years-to-maturity" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="10" min="1" max="100">
+                </div>
+                <div>
+                    <label for="edu-present-cost" class="block text-gray-700 font-medium mb-1">Education Cost Today (₹)</label>
+                    <input type="number" id="edu-present-cost" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="1000000" min="100">
+                </div>
+                <div>
+                    <label for="edu-expected-returns" class="block text-gray-700 font-medium mb-1">Expected Returns (% Yearly)</label>
+                    <input type="number" id="edu-expected-returns" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="12" min="1" max="50">
+                </div>
+                <div>
+                    <label for="edu-inflation" class="block text-gray-700 font-medium mb-1">Expected Inflation (%)</label>
+                    <input type="number" id="edu-inflation" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="10" min="1" max="50">
+                </div>
+                <button id="calculate-education-cost" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                    CHECK
+                </button>
+                <div id="edu-value-result" class="text-center p-4 bg-gray-100 rounded-lg hidden">
+                    <p class="text-lg font-semibold text-gray-800 mb-2">Expected Education Cost would be..</p>
+                    <p id="target-edu-cost" class="text-2xl font-bold text-blue-600"></p>
+                    <p class="text-lg font-semibold text-gray-800 mt-4">Required Monthly SIP to achieve the goal:</p>
+                    <p id="required-sip-edu" class="text-2xl font-bold text-blue-600 mt-2"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Mutual Funds Inquiry Modal -->
+    <div id="mutual-inquiry-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black bg-opacity-70 transition-opacity duration-300">
+        <div class="modal-content bg-white rounded-2xl p-8 max-w-xl mx-auto shadow-2xl relative">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <h3 class="text-3xl font-bold text-gray-800 mb-4 font-heading">Grow Your Wealth with Mutual Funds</h3>
+            <p class="text-gray-600 mb-6">
+                Investing in mutual funds allows you to diversify your portfolio and benefit from professional management. We help you choose from a wide variety of funds across different asset classes to align with your risk tolerance and financial objectives.
+            </p>
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <h4 class="text-2xl font-bold text-center text-gray-700 mb-6 font-heading">Financial Calculators</h4>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <button data-modal-target="sip-calculator-modal" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                        SIP Calculator
+                    </button>
+                    <button data-modal-target="swp-calculator-modal" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                        SWP Calculator
+                    </button>
+                    <button data-modal-target="emi-calculator-modal" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                        EMI Calculator
+                    </button>
+                    <button data-modal-target="retirement-calculator-modal" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                        Retirement Planner
+                    </button>
+                    <button data-modal-target="goal-planning-modal" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                        Goal Planning
+                    </button>
+                    <button data-modal-target="child-education-modal" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                        Child's Education
+                    </button>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <p class="text-center text-gray-600 mb-4">Interested in personalized guidance? Fill out the form below and we'll be in touch.</p>
+                <form action="mailto:mutual-inquiry@harihridayfs.com" method="post" enctype="text/plain">
+                    <div class="space-y-4">
+                        <input type="text" name="Name" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Your Name" required>
+                        <input type="email" name="Email" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Your Email" required>
+                        <input type="tel" name="Phone" class="w-full p-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Your Phone Number" required>
+                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                            Submit Inquiry
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Mobile Menu and Modals -->
+    <script>
+        // Mobile Menu Logic
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Modal Logic
+        const modalButtons = document.querySelectorAll('[data-modal-target]');
+        const modalCloseButtons = document.querySelectorAll('.modal-close-btn');
+        const allModals = document.querySelectorAll('.modal');
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                allModals.forEach(m => closeModal(m, false));
+                modal.classList.add('active');
+            }
+        }
+
+        function closeModal(modal, animate = true) {
+            if (modal) {
+                if (animate) {
+                    modal.classList.remove('active');
+                } else {
+                    modal.classList.remove('active');
+                }
+            }
+        }
+
+        modalButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const modalId = button.getAttribute('data-modal-target');
+                if (modalId) {
+                    e.stopPropagation();
+                    openModal(modalId);
+                }
+            });
+        });
+
+        modalCloseButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const modal = button.closest('.modal');
+                if (modal) {
+                    e.stopPropagation();
+                    closeModal(modal);
+                }
+            });
+        });
+
+        allModals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal);
+                }
+            });
+        });
+        
+        // --- General SIP Calculator Logic ---
+        const calculateSipValueBtn = document.getElementById('calculate-sip-value');
+        if (calculateSipValueBtn) {
+            calculateSipValueBtn.addEventListener('click', calculateSipValue);
+        }
+
+        function calculateSipValue() {
+            const monthlyInvestment = parseFloat(document.getElementById('sip-amount').value);
+            const years = parseFloat(document.getElementById('sip-years').value);
+            const annualReturn = parseFloat(document.getElementById('sip-returns').value);
+
+            if (isNaN(monthlyInvestment) || isNaN(years) || isNaN(annualReturn)) {
+                showCustomMessage('Please enter valid numbers for all fields.', 'Error');
+                return;
+            }
+
+            const months = years * 12;
+            const monthlyRate = annualReturn / 100 / 12;
+
+            const futureValue = monthlyInvestment * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
+            const totalInvested = monthlyInvestment * months;
+            
+            const resultDiv = document.getElementById('sip-value-result');
+            document.getElementById('total-invested-sip').textContent = '₹' + totalInvested.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('total-corpus-sip').textContent = '₹' + futureValue.toLocaleString('en-IN', {maximumFractionDigits: 0});
+
+            resultDiv.classList.remove('hidden');
+        }
+
+        // --- SWP Calculator Logic ---
+        const calculateSwpValueBtn = document.getElementById('calculate-swp-value');
+        if (calculateSwpValueBtn) {
+            calculateSwpValueBtn.addEventListener('click', calculateSwpValue);
+        }
+
+        function calculateSwpValue() {
+            const initialInvestment = parseFloat(document.getElementById('swp-initial-investment').value);
+            const monthlyWithdrawal = parseFloat(document.getElementById('swp-withdrawal-amount').value);
+            const years = parseFloat(document.getElementById('swp-years').value);
+            const annualReturn = parseFloat(document.getElementById('swp-returns').value);
+
+            if (isNaN(initialInvestment) || isNaN(monthlyWithdrawal) || isNaN(years) || isNaN(annualReturn)) {
+                showCustomMessage('Please enter valid numbers for all fields.', 'Error');
+                return;
+            }
+
+            const months = years * 12;
+            const monthlyRate = annualReturn / 100 / 12;
+
+            let remainingCorpus = initialInvestment;
+            let totalWithdrawn = 0;
+
+            for (let i = 0; i < months; i++) {
+                remainingCorpus *= (1 + monthlyRate);
+                if (remainingCorpus >= monthlyWithdrawal) {
+                    remainingCorpus -= monthlyWithdrawal;
+                    totalWithdrawn += monthlyWithdrawal;
+                } else {
+                    totalWithdrawn += remainingCorpus;
+                    remainingCorpus = 0;
+                }
+            }
+            
+            const resultDiv = document.getElementById('swp-value-result');
+            document.getElementById('total-withdrawn-swp').textContent = '₹' + totalWithdrawn.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('remaining-corpus-swp').textContent = '₹' + remainingCorpus.toLocaleString('en-IN', {maximumFractionDigits: 0});
+
+            resultDiv.classList.remove('hidden');
+        }
+
+        // --- EMI Calculator Logic ---
+        const calculateEmiValueBtn = document.getElementById('calculate-emi-value');
+        if (calculateEmiValueBtn) {
+            calculateEmiValueBtn.addEventListener('click', calculateEmiValue);
+        }
+
+        function calculateEmiValue() {
+            const loanAmount = parseFloat(document.getElementById('loan-amount').value);
+            const annualInterestRate = parseFloat(document.getElementById('loan-interest').value);
+            const loanDurationYears = parseFloat(document.getElementById('loan-duration').value);
+
+            if (isNaN(loanAmount) || isNaN(annualInterestRate) || isNaN(loanDurationYears)) {
+                showCustomMessage('Please enter valid numbers for all fields.', 'Error');
+                return;
+            }
+
+            const monthlyInterestRate = (annualInterestRate / 100) / 12;
+            const totalMonths = loanDurationYears * 12;
+
+            if (monthlyInterestRate === 0) {
+                // Simple calculation for 0% interest
+                const emi = loanAmount / totalMonths;
+                const totalPayable = loanAmount;
+                const resultDiv = document.getElementById('emi-value-result');
+                document.getElementById('total-emi-value').textContent = '₹' + emi.toLocaleString('en-IN', {maximumFractionDigits: 0});
+                document.getElementById('total-payable-emi').textContent = '₹' + totalPayable.toLocaleString('en-IN', {maximumFractionDigits: 0});
+                resultDiv.classList.remove('hidden');
+                return;
+            }
+
+            const emi = loanAmount * monthlyInterestRate * (Math.pow(1 + monthlyInterestRate, totalMonths)) / (Math.pow(1 + monthlyInterestRate, totalMonths) - 1);
+            const totalPayable = emi * totalMonths;
+            
+            const resultDiv = document.getElementById('emi-value-result');
+            document.getElementById('total-emi-value').textContent = '₹' + emi.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('total-payable-emi').textContent = '₹' + totalPayable.toLocaleString('en-IN', {maximumFractionDigits: 0});
+
+            resultDiv.classList.remove('hidden');
+        }
+        
+        // --- Retirement Calculator Logic ---
+        const calculateRetirementBtn = document.getElementById('calculate-retirement-value');
+        if (calculateRetirementBtn) {
+            calculateRetirementBtn.addEventListener('click', calculateRetirementGoal);
+        }
+
+        function calculateRetirementGoal() {
+            const presentAge = parseFloat(document.getElementById('present-age').value);
+            const retirementAge = parseFloat(document.getElementById('retirement-age').value);
+            const currentMonthlyExpenses = parseFloat(document.getElementById('monthly-expenses').value);
+            const expectedReturns = parseFloat(document.getElementById('ret-expected-returns').value);
+            const expectedInflation = parseFloat(document.getElementById('ret-inflation').value);
+
+            if (isNaN(presentAge) || isNaN(retirementAge) || isNaN(currentMonthlyExpenses) || isNaN(expectedReturns) || isNaN(expectedInflation)) {
+                showCustomMessage('Please enter valid numbers for all fields.', 'Error');
+                return;
+            }
+
+            if (retirementAge <= presentAge) {
+                showCustomMessage('Retirement Age must be greater than Present Age.', 'Error');
+                return;
+            }
+
+            const yearsToRetirement = retirementAge - presentAge;
+            const inflationRate = expectedInflation / 100;
+            const returnRate = expectedReturns / 100;
+
+            // Calculate the future value of current expenses at retirement age
+            const futureMonthlyExpenses = currentMonthlyExpenses * Math.pow((1 + inflationRate), yearsToRetirement);
+
+            // Calculate the required corpus to sustain post-retirement expenses
+            const requiredCorpus = (futureMonthlyExpenses * 12) / (returnRate);
+            
+            // Calculate the required monthly SIP to reach the required corpus
+            const monthlyReturnRate = returnRate / 12;
+            const monthsToRetirement = yearsToRetirement * 12;
+            
+            const requiredSIP = requiredCorpus * monthlyReturnRate / ((Math.pow(1 + monthlyReturnRate, monthsToRetirement)) - 1);
+
+            const resultDiv = document.getElementById('retirement-value-result');
+            document.getElementById('required-corpus-ret').textContent = '₹' + requiredCorpus.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('required-sip-ret').textContent = '₹' + requiredSIP.toLocaleString('en-IN', {maximumFractionDigits: 0});
+
+            resultDiv.classList.remove('hidden');
+        }
+        
+        // --- Goal Planning Calculator Logic ---
+        const calculateGoalValueBtn = document.getElementById('calculate-goal-value');
+        if (calculateGoalValueBtn) {
+            calculateGoalValueBtn.addEventListener('click', calculateGoalValue);
+        }
+
+        function calculateGoalValue() {
+            const goalName = document.getElementById('goal-name').value;
+            const presentCost = parseFloat(document.getElementById('present-cost').value);
+            const years = parseFloat(document.getElementById('goal-years').value);
+            const annualReturn = parseFloat(document.getElementById('goal-expected-returns').value);
+            const annualInflation = parseFloat(document.getElementById('goal-inflation').value);
+
+            if (isNaN(presentCost) || isNaN(years) || isNaN(annualReturn) || isNaN(annualInflation)) {
+                showCustomMessage('Please enter valid numbers for all fields.', 'Error');
+                return;
+            }
+
+            const inflationRate = annualInflation / 100;
+            const returnRate = annualReturn / 100;
+
+            // Calculate the future value of the goal considering inflation
+            const futureCost = presentCost * Math.pow((1 + inflationRate), years);
+
+            // Calculate the monthly SIP required to achieve the future value
+            const monthlyReturnRate = returnRate / 12;
+            const months = years * 12;
+
+            const requiredSIP = futureCost * monthlyReturnRate / ((Math.pow(1 + monthlyReturnRate, months)) - 1);
+            
+            const resultDiv = document.getElementById('goal-value-result');
+            document.getElementById('target-goal-name').textContent = goalName || 'the goal';
+            document.getElementById('target-amount-goal').textContent = '₹' + futureCost.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('required-sip-goal').textContent = '₹' + requiredSIP.toLocaleString('en-IN', {maximumFractionDigits: 0});
+
+            resultDiv.classList.remove('hidden');
+        }
+
+        // --- Child's Education Calculator Logic ---
+        const calculateEducationCostBtn = document.getElementById('calculate-education-cost');
+        if (calculateEducationCostBtn) {
+            calculateEducationCostBtn.addEventListener('click', calculateEducationCost);
+        }
+
+        function calculateEducationCost() {
+            const presentCost = parseFloat(document.getElementById('edu-present-cost').value);
+            const years = parseFloat(document.getElementById('edu-years-to-maturity').value);
+            const annualReturn = parseFloat(document.getElementById('edu-expected-returns').value);
+            const annualInflation = parseFloat(document.getElementById('edu-inflation').value);
+
+            if (isNaN(presentCost) || isNaN(years) || isNaN(annualReturn) || isNaN(annualInflation)) {
+                showCustomMessage('Please enter valid numbers for all fields.', 'Error');
+                return;
+            }
+
+            const inflationRate = annualInflation / 100;
+            const returnRate = annualReturn / 100;
+
+            // Calculate the future value of the goal considering inflation
+            const futureCost = presentCost * Math.pow((1 + inflationRate), years);
+
+            // Calculate the monthly SIP required to achieve the future value
+            const monthlyReturnRate = returnRate / 12;
+            const months = years * 12;
+
+            const requiredSIP = futureCost * monthlyReturnRate / ((Math.pow(1 + monthlyReturnRate, months)) - 1);
+
+            const resultDiv = document.getElementById('edu-value-result');
+            document.getElementById('target-edu-cost').textContent = '₹' + futureCost.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('required-sip-edu').textContent = '₹' + requiredSIP.toLocaleString('en-IN', {maximumFractionDigits: 0});
+
+            resultDiv.classList.remove('hidden');
+        }
+
+
+        // Custom message box function (replaces alert)
+        function showCustomMessage(message, title = 'Notification') {
+            let messageModal = document.getElementById('message-modal');
+            if (!messageModal) {
+                messageModal = document.createElement('div');
+                messageModal.id = 'message-modal';
+                messageModal.classList.add('modal', 'fixed', 'inset-0', 'z-[110]', 'flex', 'items-center', 'justify-center', 'p-4', 'bg-black', 'bg-opacity-70', 'transition-opacity', 'duration-300');
+                messageModal.innerHTML = `
+                    <div class="modal-content bg-white rounded-2xl p-8 max-w-sm mx-auto shadow-2xl relative">
+                        <h4 class="text-xl font-bold text-gray-800 mb-4 font-heading">${title}</h4>
+                        <p class="text-gray-600 mb-6" id="message-text"></p>
+                        <button class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300" onclick="closeModal(document.getElementById('message-modal'));">OK</button>
+                    </div>
+                `;
+                document.body.appendChild(messageModal);
+            }
+            
+            document.getElementById('message-text').textContent = message;
+            openModal('message-modal');
+        }
+
+    </script>
+</body>
+</html>
